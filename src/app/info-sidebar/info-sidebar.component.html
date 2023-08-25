@@ -1,85 +1,86 @@
 <div class="card flex flex-column align-items-center gap-2">
   <div class="flex flex-wrap gap-2">
-     <p-button (click)="showDialog('right')" icon="pi pi-arrow-left" label="Right" styleClass="p-button-help"></p-button>
-  </div>
-  <p-dialog header="Header" [(visible)]="visible" [position]="'right'" [style]="{ width: '50vw' }">
     <div class="card">
-      <h5>TabView Tab deafult here</h5>
       <!-- 第一個手風琴 -->
       <p-accordion class="w-full">
         <p-accordionTab>
-            <ng-template pTemplate="header">
-                <div class="flex align-items-center justify-content-between w-full">
-                    <span class="p-accordion-header-text vertical-align-middle">抽審描述</span>
-                    <button pButton pRipple type="button" icon="pi pi-window-maximize" class="p-button-rounded p-button-text mr-2"></button>
-                </div>
-            </ng-template>
-            <ng-template pTemplate="content">
-                <p class="m-0">
-                  <p-tabView orientation="left">
-                    <p-tabPanel header="Header II" class="line-height-3 m-0">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                        totam rem aperiam, eaque
-                        ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                        enim ipsam voluptatem quia
-                        voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                        voluptatem sequi nesciunt.
-                        Consectetur, adipisci velit, sed quia non numquam eius modi.
-                    </p-tabPanel>
-                    <p-tabPanel header="Header III" class="line-height-3 m-0">
-                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-                        deleniti atque corrupti quos dolores
-                        et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
-                        officia deserunt mollitia animi, id est laborum et dolorum fuga.
-                        Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est
-                        eligendi optio cumque nihil impedit
-                        quo minus.
-                    </p-tabPanel>
-                </p-tabView>
-                </p>
-            </ng-template>
+          <ng-template pTemplate="header">
+            <div class="flex align-items-center justify-content-between w-full">
+              <span class="p-accordion-header-text vertical-align-middle"
+                >{{value}}</span
+              >
+              <button
+                (click)="onExtendedDialog()"
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-window-maximize"
+                class="p-button-rounded p-button-text mr-2"
+              ></button>
+            </div>
+          </ng-template>
+          <ng-template #dialogTemplate pTemplate="content" >
+            <p class="m-0">
+              <p-tabView orientation="left">
+                <p-tabPanel header="{{value}}" class="line-height-3 m-0">
+                  <ng-container
+                    [ngTemplateOutlet]="systemTemplateI || defaultSystemTemplateI"
+                  ></ng-container>
+
+                </p-tabPanel>
+
+                <p-tabPanel header="{{value}}" class="line-height-3 m-0">
+                  <ng-container
+                    [ngTemplateOutlet]="systemTemplateII || defaultSystemTemplateII"
+                  ></ng-container>
+                </p-tabPanel>
+              </p-tabView>
+            </p>
+          </ng-template>
         </p-accordionTab>
-<!-- //第二個手風琴 -->
-<p-accordionTab>
-  <ng-template pTemplate="header">
-      <div class="flex align-items-center justify-content-between w-full">
-          <span class="p-accordion-header-text vertical-align-middle">抽審描述</span>
-          <button pButton pRipple type="button" icon="pi pi-window-maximize" class="p-button-rounded p-button-text mr-2"></button>
-      </div>
-  </ng-template>
-  <ng-template pTemplate="content">
-      <p class="m-0">
-        <p-tabView orientation="left">
-          <p-tabPanel header="Header II" class="line-height-3 m-0">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-              totam rem aperiam, eaque
-              ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
-              enim ipsam voluptatem quia
-              voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-              voluptatem sequi nesciunt.
-              Consectetur, adipisci velit, sed quia non numquam eius modi.
-          </p-tabPanel>
-          <p-tabPanel header="Header III" class="line-height-3 m-0">
-              At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-              deleniti atque corrupti quos dolores
-              et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
-              officia deserunt mollitia animi, id est laborum et dolorum fuga.
-              Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est
-              eligendi optio cumque nihil impedit
-              quo minus.
-          </p-tabPanel>
-      </p-tabView>
-      </p>
-  </ng-template>
-</p-accordionTab>
 
-    </p-accordion>
-
-
+        <!-- //第二個手風琴 -->
+        <p-accordionTab>
+          <ng-template pTemplate="header">
+            <div class="flex align-items-center justify-content-between w-full">
+              <span class="p-accordion-header-text vertical-align-middle"
+                >{{value}}</span
+              >
+              <p-button
+              (click)="onExtendedDialog()"
+                type="button"
+                icon="pi pi-window-maximize"
+                styleClass="p-button-rounded p-button-text mr-2"
+              ></p-button>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="content">
+            <ng-container
+              [ngTemplateOutlet]="suggestionTemplate || defaultSuggestionTemplate"
+            ></ng-container>
+          </ng-template>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
   </div>
-  </p-dialog>
 </div>
 
 
+<ng-template #defaultSystemTemplateI>
+  預設模板
+</ng-template>
 
+<ng-template #defaultSystemTemplateII>
+  預設模板
+</ng-template>
+
+<ng-template #defaultSuggestionTemplate>
+  預設模板
+</ng-template>
+
+<app-shai
+[inputTemplate]="dialogTemplate"
+[header]="value"
+[(visible)]="visible"
+></app-shai>
 
