@@ -7,12 +7,14 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { ShaiComponent } from "../shai/shai.component";
+import { TemplateInfo } from "../info-sidebar/templateInfo";
+import { FormsModule } from '@angular/forms';
 @Component({
     selector: 'app-info-sidebar',
     standalone: true,
     templateUrl: './info-sidebar.component.html',
     styleUrls: ['./info-sidebar.component.scss'],
-    imports: [CommonModule, AccordionModule, TabViewModule, DialogModule, ButtonModule, CardModule, DividerModule, ShaiComponent]
+    imports: [CommonModule, AccordionModule, TabViewModule, DialogModule, ButtonModule, CardModule, DividerModule, ShaiComponent, FormsModule]
 })
 export class InfoSidebarComponent  {
 
@@ -22,7 +24,13 @@ export class InfoSidebarComponent  {
   @Input()  suggestionTemplate!: TemplateRef<any>;
 
   visible=false;
-  onExtendedDialog() {
+   /**
+   * 展開Dialog
+   */
+  templateInfo: TemplateInfo = new TemplateInfo();
+  onExtendedDialog(template: TemplateRef<any>) {
     this.visible = !this.visible;
-    }
+    this.templateInfo.dialogTemplate = template;
+    console.log(this.templateInfo);
+  }
 }

@@ -29,4 +29,7 @@ onHideDialog() {
   this.visibleChange.emit(false);
 
 }
+showDialog() {
+  this.visible = true;
+}
 }

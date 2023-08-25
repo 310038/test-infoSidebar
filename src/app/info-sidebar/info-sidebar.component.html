@@ -10,7 +10,7 @@
                 >{{value}}</span
               >
               <button
-                (click)="onExtendedDialog()"
+                (click)="onExtendedDialog(dialogTemplate)"
                 pButton
                 pRipple
                 type="button"
@@ -47,7 +47,7 @@
                 >{{value}}</span
               >
               <p-button
-              (click)="onExtendedDialog()"
+              (click)="onExtendedDialog(dialogTemplate)"
                 type="button"
                 icon="pi pi-window-maximize"
                 styleClass="p-button-rounded p-button-text mr-2"
@@ -78,9 +78,9 @@
   預設模板
 </ng-template>
 
-<app-shai
+<!-- <app-shai
 [inputTemplate]="dialogTemplate"
 [header]="value"
 [(visible)]="visible"
-></app-shai>
+></app-shai> -->
 
