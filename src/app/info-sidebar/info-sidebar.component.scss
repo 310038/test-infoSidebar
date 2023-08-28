@@ -1,34 +1,43 @@
-// :host {
-//   ::ng-deep{
-//     .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
-//       border-color: none;
-//       padding:none;
-//        border-top: none;
-//       color: none;
-//   }
-//   .p-tabview .p-tabview-nav :hover{
-//     color:--primary-500#008864;
-//   }
+:host {
+  ::ng-deep {
+    .sidebar {
+      position: fixed;
+      height: 100%;
+      right: 0;
+      min-width: var(--card-min-w, 240px);
+      padding: var(--spacing-xs, 4px) var(--spacing-sm, 8px);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-sm, 8px);
+      flex: 1 0 0;
+      align-self: stretch;
+      border-radius: var(--border-radius-card, 12px);
+      border: 0.5px solid var(--outline-variant, #b5bfbb);
+      background: var(--surface-card, #fff);
+    }
 
-//   .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
-//     border-color: var(--outline-variant);
-//        background: none;
-//        border-color: none;
-//        color: none;
-//   }
-//   .p-tabview .p-tabview-nav li .p-tabview-nav-link {
-//          border: none;
-//          border-width: none;
-//          border-color: none;
-//       background: #ffffff;
-//          color: none;
-//       padding: 11px 12px;
-//       font-weight: 500;
-//          border-top-right-radius: none;
-//          border-top-left-radius: none;
-//          transition: none;
-//          margin: none;
-//          transition: none;
-//   }
-//   }
-// }
+    .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+      border: none;
+      background: #ffffff;
+      padding: 11px 12px;
+      font-weight: 500;
+      transition: none;
+    }
+
+    .p-tabview-title::before {
+      content: "";
+      position: absolute;
+      top: -1vh;
+      right: -1vh;
+      bottom: -1vh;
+      left: -1vh;
+    }
+    .p-tabview .p-tabview-nav :hover {
+      color: var(--primary-500);
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      background: var(--primary-800);
+      border-color: var(--outline-variant);
+    }
+  }
+}

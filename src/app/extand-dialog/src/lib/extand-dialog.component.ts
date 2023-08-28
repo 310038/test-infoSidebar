@@ -1,17 +1,16 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InfoSidebarComponent } from "../info-sidebar/info-sidebar.component";
 import { DialogModule } from 'primeng/dialog';
-import { ButtonModule } from 'primeng/button';
-import { SidebarModule } from 'primeng/sidebar';
+
 @Component({
-    selector: 'app-shai',
-    standalone: true,
-    templateUrl: './shai.component.html',
-    styleUrls: ['./shai.component.scss'],
-    imports: [CommonModule,SidebarModule,ButtonModule,DialogModule, InfoSidebarComponent]
+  selector: 'his-extand-dialog',
+  standalone: true,
+  imports: [CommonModule, DialogModule],
+  templateUrl: 'extand-dialog.component.html',
+  styleUrls: ['extand-dialog.component.scss']
 })
-export class ShaiComponent {
+export class ExtandDialogComponent {
   /**
    * 顯示於 extand-dialog 之模板內容
    * @type {TemplateRef<any>}

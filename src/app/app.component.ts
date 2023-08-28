@@ -5,12 +5,13 @@ import { InfoSidebarComponent } from './info-sidebar/info-sidebar.component';
 import { ShaiComponent } from "./shai/shai.component";
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
+import { ScrollerModule } from 'primeng/scroller';
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    imports: [CommonModule,ButtonModule, SidebarModule,RouterOutlet, InfoSidebarComponent, ShaiComponent]
+    imports: [CommonModule,ScrollerModule,ButtonModule, SidebarModule,RouterOutlet, InfoSidebarComponent, ShaiComponent]
 })
 export class AppComponent {
   template!:  TemplateRef<any>;

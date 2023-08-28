@@ -1,6 +1,6 @@
-<div class="card flex flex-column align-items-center gap-2">
-  <div class="flex flex-wrap gap-2">
-    <div class="card">
+<!-- <p-scroller [style]="{'width': '100%', 'height': '50vh'}"></p-scroller> -->
+<div class="sidebar">
+   <div class="card"  >
       <!-- 第一個手風琴 -->
       <p-accordion class="w-full">
         <p-accordionTab>
@@ -19,25 +19,29 @@
               ></button>
             </div>
           </ng-template>
+
+
           <ng-template #dialogTemplate pTemplate="content" >
+
             <p class="m-0">
               <p-tabView orientation="left">
-                <p-tabPanel header="{{value}}" class="line-height-3 m-0">
-                  <ng-container
-                    [ngTemplateOutlet]="systemTemplateI || defaultSystemTemplateI"
-                  ></ng-container>
-
+                <p-tabPanel header="{{value}}" class="line-height-3 m-0" >
+                  <ng-template
+                    [ngTemplateOutlet]="systemTemplateI"
+                  >
+                </ng-template>
                 </p-tabPanel>
 
                 <p-tabPanel header="{{value}}" class="line-height-3 m-0">
                   <ng-container
-                    [ngTemplateOutlet]="systemTemplateII || defaultSystemTemplateII"
-                  ></ng-container>
-                </p-tabPanel>
-              </p-tabView>
-            </p>
+                    [ngTemplateOutlet]="systemTemplateII"
+                    ></ng-container>
+                  </p-tabPanel>
+                </p-tabView>
+              </p>
           </ng-template>
         </p-accordionTab>
+
 
         <!-- //第二個手風琴 -->
         <p-accordionTab>
@@ -56,27 +60,22 @@
           </ng-template>
           <ng-template pTemplate="content">
             <ng-container
-              [ngTemplateOutlet]="suggestionTemplate || defaultSuggestionTemplate"
+              [ngTemplateOutlet]="suggestionTemplate"
             ></ng-container>
           </ng-template>
         </p-accordionTab>
       </p-accordion>
     </div>
   </div>
-</div>
+<!--
+<his-extand-dialog
+[inputTemplate]="dialogTemplate"
+[header]="value"
+[visible]="visible"
+[height]="'100vh'"
+[width]="'100vw'">
 
-
-<ng-template #defaultSystemTemplateI>
-  預設模板
-</ng-template>
-
-<ng-template #defaultSystemTemplateII>
-  預設模板
-</ng-template>
-
-<ng-template #defaultSuggestionTemplate>
-  預設模板
-</ng-template>
+</his-extand-dialog> -->
 
 <app-shai
 [inputTemplate]="dialogTemplate"
